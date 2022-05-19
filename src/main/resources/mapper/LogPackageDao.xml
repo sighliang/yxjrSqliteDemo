@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxjr.yxjrsqlitedemo.dao.LogPackageDao">
+
+    <resultMap type="com.yxjr.yxjrsqlitedemo.entity.LogPackage" id="LogPackageMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="logName" column="log_name" jdbcType="VARCHAR"/>
+        <result property="uploadTime" column="upload_time" jdbcType="TIMESTAMP"/>
+        <result property="devId" column="dev_id" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="retain1" column="retain1" jdbcType="VARCHAR"/>
+        <result property="retain2" column="retain2" jdbcType="VARCHAR"/>
+        <result property="retain3" column="retain3" jdbcType="VARCHAR"/>
+        <result property="retain4" column="retain4" jdbcType="VARCHAR"/>
+        <result property="retain5" column="retain5" jdbcType="VARCHAR"/>
+        <result property="retain6" column="retain6" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个设备的日志包-->
+    <select id="queryByDevId" resultMap="LogPackageMap">
+        select
+          id, log_name,upload_time, devId, url, retain1, retain2, retain3, retain4, retain5, retain6
+        from log_package
+        where devId = #{devId}
+    </select>
+    <delete id="deleteByTime">
+        delete  FROM log_package where  datetime('now','-30 day') > datetime(upload_time/1000,'unixepoch')
+    </delete>
+</mapper>
+

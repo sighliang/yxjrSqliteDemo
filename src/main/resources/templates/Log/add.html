@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head th:include="include :: header('提取设备日志')"></head>
+<body>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+  <div class="col-sm-8">
+    <div class="ibox">
+      <div class="ibox-body">
+        <div class="col-sm-12 search-choice-focus">
+          <div class="columns pull-left col-md-2 ">
+            <p>提取时间：</p>
+            <input id="datetime" type="date" class="form-control">
+          </div>
+          <div class="columns pull-right col-md-4">
+            <button  type="button"
+                     class="btn  btn-success" onclick="upload()">
+              <i class="fa fa-trash hidden" aria-hidden="true"></i>提取日志
+            </button>
+          </div>
+        </div>
+        <div class="fixed-table-toolbar">
+          <div class="columns pull-right">
+            <button class="btn btn-success" onclick="reLoad()">查询</button>
+          </div>
+          <div class="columns pull-right col-md-2 col-md-3">
+            <input id="branchId" type="text" class="form-control"
+                   placeholder="网点编号">
+          </div>
+          <div class="columns pull-right col-md-2 col-md-3">
+            <input id="devId" type="text" class="form-control"
+                   placeholder="设备编号">
+          </div>
+        </div>
+        <table id="deviceTable" data-mobile-responsive="true">
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/Log/add.js"></script>
+</body>
+</html>

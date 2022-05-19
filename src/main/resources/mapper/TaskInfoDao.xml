@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxjr.yxjrsqlitedemo.dao.TaskInfoDao">
+
+    <resultMap type="com.yxjr.yxjrsqlitedemo.entity.TaskInfo" id="TaskInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="devId" column="dev_id" jdbcType="VARCHAR"/>
+        <result property="taskNum" column="task_num" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="retain1" column="retain1" jdbcType="VARCHAR"/>
+        <result property="retain2" column="retain2" jdbcType="VARCHAR"/>
+        <result property="retain3" column="retain3" jdbcType="VARCHAR"/>
+        <result property="retain4" column="retain4" jdbcType="VARCHAR"/>
+        <result property="retain6" column="retain6" jdbcType="VARCHAR"/>
+        <result property="retain7" column="retain7" jdbcType="VARCHAR"/>
+        <result property="retain8" column="retain8" jdbcType="VARCHAR"/>
+        <result property="retain9" column="retain9" jdbcType="VARCHAR"/>
+        <result property="retain10" column="retain10" jdbcType="VARCHAR"/>
+        <result property="retain11" column="retain11" jdbcType="VARCHAR"/>
+        <result property="retain12" column="retain12" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TaskInfoMap">
+        select
+          id, dev_id, task_num, create_time, retain1, retain2, retain3, retain4, retain6, retain7, retain8, retain9, retain10, retain11, retain12
+        from task_info
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TaskInfoMap">
+        select
+          id, dev_id, task_num, create_time, retain1, retain2, retain3, retain4, retain6, retain7, retain8, retain9, retain10, retain11, retain12
+        from task_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="devId != null and devId != ''">
+                and dev_id = #{devId}
+            </if>
+            <if test="taskNum != null">
+                and task_num = #{taskNum}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="retain1 != null and retain1 != ''">
+                and retain1 = #{retain1}
+            </if>
+            <if test="retain2 != null and retain2 != ''">
+                and retain2 = #{retain2}
+            </if>
+            <if test="retain3 != null and retain3 != ''">
+                and retain3 = #{retain3}
+            </if>
+            <if test="retain4 != null and retain4 != ''">
+                and retain4 = #{retain4}
+            </if>
+            <if test="retain6 != null and retain6 != ''">
+                and retain6 = #{retain6}
+            </if>
+            <if test="retain7 != null and retain7 != ''">
+                and retain7 = #{retain7}
+            </if>
+            <if test="retain8 != null and retain8 != ''">
+                and retain8 = #{retain8}
+            </if>
+            <if test="retain9 != null and retain9 != ''">
+                and retain9 = #{retain9}
+            </if>
+            <if test="retain10 != null and retain10 != ''">
+                and retain10 = #{retain10}
+            </if>
+            <if test="retain11 != null and retain11 != ''">
+                and retain11 = #{retain11}
+            </if>
+            <if test="retain12 != null and retain12 != ''">
+                and retain12 = #{retain12}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select COALESCE(sum(task_num),0)
+        from task_info
+        where dev_id=#{devId}
+        and create_time between #{beginTime} and #{endTime}
+    </select>
+
+    <!--    &lt;!&ndash;统计总行数&ndash;&gt;-->
+<!--    <select id="count" resultType="java.lang.Long">-->
+<!--        select count(1)-->
+<!--        from task_info-->
+<!--        <where>-->
+<!--            <if test="id != null">-->
+<!--                and id = #{id}-->
+<!--            </if>-->
+<!--            <if test="devId != null and devId != ''">-->
+<!--                and dev_id = #{devId}-->
+<!--            </if>-->
+<!--            <if test="taskNum != null">-->
+<!--                and task_num = #{taskNum}-->
+<!--            </if>-->
+<!--            <if test="createTime != null">-->
+<!--                and create_time = #{createTime}-->
+<!--            </if>-->
+<!--            <if test="retain1 != null and retain1 != ''">-->
+<!--                and retain1 = #{retain1}-->
+<!--            </if>-->
+<!--            <if test="retain2 != null and retain2 != ''">-->
+<!--                and retain2 = #{retain2}-->
+<!--            </if>-->
+<!--            <if test="retain3 != null and retain3 != ''">-->
+<!--                and retain3 = #{retain3}-->
+<!--            </if>-->
+<!--            <if test="retain4 != null and retain4 != ''">-->
+<!--                and retain4 = #{retain4}-->
+<!--            </if>-->
+<!--            <if test="retain6 != null and retain6 != ''">-->
+<!--                and retain6 = #{retain6}-->
+<!--            </if>-->
+<!--            <if test="retain7 != null and retain7 != ''">-->
+<!--                and retain7 = #{retain7}-->
+<!--            </if>-->
+<!--            <if test="retain8 != null and retain8 != ''">-->
+<!--                and retain8 = #{retain8}-->
+<!--            </if>-->
+<!--            <if test="retain9 != null and retain9 != ''">-->
+<!--                and retain9 = #{retain9}-->
+<!--            </if>-->
+<!--            <if test="retain10 != null and retain10 != ''">-->
+<!--                and retain10 = #{retain10}-->
+<!--            </if>-->
+<!--            <if test="retain11 != null and retain11 != ''">-->
+<!--                and retain11 = #{retain11}-->
+<!--            </if>-->
+<!--            <if test="retain12 != null and retain12 != ''">-->
+<!--                and retain12 = #{retain12}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;新增所有列&ndash;&gt;-->
+<!--    <insert id="insert" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into task_info(dev_id, task_num, create_time, retain1, retain2, retain3, retain4, retain6, retain7, retain8, retain9, retain10, retain11, retain12)-->
+<!--        values (#{devId}, #{taskNum}, #{createTime}, #{retain1}, #{retain2}, #{retain3}, #{retain4}, #{retain6}, #{retain7}, #{retain8}, #{retain9}, #{retain10}, #{retain11}, #{retain12})-->
+<!--    </insert>-->
+
+<!--    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into task_info(dev_id, task_num, create_time, retain1, retain2, retain3, retain4, retain6, retain7, retain8, retain9, retain10, retain11, retain12)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--        (#{entity.devId}, #{entity.taskNum}, #{entity.createTime}, #{entity.retain1}, #{entity.retain2}, #{entity.retain3}, #{entity.retain4}, #{entity.retain6}, #{entity.retain7}, #{entity.retain8}, #{entity.retain9}, #{entity.retain10}, #{entity.retain11}, #{entity.retain12})-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+<!--    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into task_info(dev_id, task_num, create_time, retain1, retain2, retain3, retain4, retain6, retain7, retain8, retain9, retain10, retain11, retain12)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--            (#{entity.devId}, #{entity.taskNum}, #{entity.createTime}, #{entity.retain1}, #{entity.retain2}, #{entity.retain3}, #{entity.retain4}, #{entity.retain6}, #{entity.retain7}, #{entity.retain8}, #{entity.retain9}, #{entity.retain10}, #{entity.retain11}, #{entity.retain12})-->
+<!--        </foreach>-->
+<!--        on duplicate key update-->
+<!--        dev_id = values(dev_id),-->
+<!--        task_num = values(task_num),-->
+<!--        create_time = values(create_time),-->
+<!--        retain1 = values(retain1),-->
+<!--        retain2 = values(retain2),-->
+<!--        retain3 = values(retain3),-->
+<!--        retain4 = values(retain4),-->
+<!--        retain6 = values(retain6),-->
+<!--        retain7 = values(retain7),-->
+<!--        retain8 = values(retain8),-->
+<!--        retain9 = values(retain9),-->
+<!--        retain10 = values(retain10),-->
+<!--        retain11 = values(retain11),-->
+<!--        retain12 = values(retain12)-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;通过主键修改数据&ndash;&gt;-->
+<!--    <update id="update">-->
+<!--        update task_info-->
+<!--        <set>-->
+<!--            <if test="devId != null and devId != ''">-->
+<!--                dev_id = #{devId},-->
+<!--            </if>-->
+<!--            <if test="taskNum != null">-->
+<!--                task_num = #{taskNum},-->
+<!--            </if>-->
+<!--            <if test="createTime != null">-->
+<!--                create_time = #{createTime},-->
+<!--            </if>-->
+<!--            <if test="retain1 != null and retain1 != ''">-->
+<!--                retain1 = #{retain1},-->
+<!--            </if>-->
+<!--            <if test="retain2 != null and retain2 != ''">-->
+<!--                retain2 = #{retain2},-->
+<!--            </if>-->
+<!--            <if test="retain3 != null and retain3 != ''">-->
+<!--                retain3 = #{retain3},-->
+<!--            </if>-->
+<!--            <if test="retain4 != null and retain4 != ''">-->
+<!--                retain4 = #{retain4},-->
+<!--            </if>-->
+<!--            <if test="retain6 != null and retain6 != ''">-->
+<!--                retain6 = #{retain6},-->
+<!--            </if>-->
+<!--            <if test="retain7 != null and retain7 != ''">-->
+<!--                retain7 = #{retain7},-->
+<!--            </if>-->
+<!--            <if test="retain8 != null and retain8 != ''">-->
+<!--                retain8 = #{retain8},-->
+<!--            </if>-->
+<!--            <if test="retain9 != null and retain9 != ''">-->
+<!--                retain9 = #{retain9},-->
+<!--            </if>-->
+<!--            <if test="retain10 != null and retain10 != ''">-->
+<!--                retain10 = #{retain10},-->
+<!--            </if>-->
+<!--            <if test="retain11 != null and retain11 != ''">-->
+<!--                retain11 = #{retain11},-->
+<!--            </if>-->
+<!--            <if test="retain12 != null and retain12 != ''">-->
+<!--                retain12 = #{retain12},-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        where id = #{id}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash;通过主键删除&ndash;&gt;-->
+<!--    <delete id="deleteById">-->
+<!--        delete from task_info where id = #{id}-->
+<!--    </delete>-->
+
+</mapper>
+

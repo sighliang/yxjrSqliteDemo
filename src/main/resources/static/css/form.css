@@ -1,0 +1,17 @@
+#formTable {
+    width: 100%;
+    border-collapse:collapse;
+}
+#formTable tr th{
+    text-align: center;
+}
+
+#formTable tr td {
+    text-align: center;
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+    padding: 15px 0px;
+}
+table thead tr th {
+    text-align: center;
+}

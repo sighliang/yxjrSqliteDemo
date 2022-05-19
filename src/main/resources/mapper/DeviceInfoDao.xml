@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxjr.yxjrsqlitedemo.dao.DeviceInfoDao">
+
+    <resultMap type="com.yxjr.yxjrsqlitedemo.entity.DeviceInfo" id="DeviceInfoMap">
+        <result property="devId" column="dev_id" jdbcType="VARCHAR"/>
+        <result property="branchId" column="branch_id" jdbcType="VARCHAR"/>
+        <result property="branchName" column="branch_name" jdbcType="VARCHAR"/>
+        <result property="ip" column="ip" jdbcType="VARCHAR"/>
+        <result property="visitTime" column="visit_time" jdbcType="TIMESTAMP"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="retain1" column="retain1" jdbcType="VARCHAR"/>
+        <result property="retain2" column="retain2" jdbcType="VARCHAR"/>
+        <result property="retain3" column="retain3" jdbcType="VARCHAR"/>
+        <result property="retain4" column="retain4" jdbcType="VARCHAR"/>
+        <result property="retain5" column="retain5" jdbcType="VARCHAR"/>
+        <result property="retain6" column="retain6" jdbcType="VARCHAR"/>
+        <result property="retain7" column="retain7" jdbcType="VARCHAR"/>
+        <result property="retain8" column="retain8" jdbcType="VARCHAR"/>
+        <result property="retain9" column="retain9" jdbcType="VARCHAR"/>
+        <result property="retain10" column="retain10" jdbcType="VARCHAR"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <update id="updateVisitTime">
+        update device_info set visit_time=#{visitTime} where dev_id = #{devId}
+    </update>
+
+    <!--根据设备id查询单个-->
+    <select id="queryByDevId" resultMap="DeviceInfoMap">
+        select
+            dev_id, branch_id, branch_name, ip, visit_time, create_time, retain1, retain2, retain3, retain4, retain5, retain6, retain7, retain8, retain9, retain10, id
+        from device_info
+        where dev_id = #{devId}
+    </select>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="DeviceInfoMap">
+        select
+          dev_id, branch_id, branch_name, ip, visit_time, create_time, retain1, retain2, retain3, retain4, retain5, retain6, retain7, retain8, retain9, retain10, id
+        from device_info
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryList" resultMap="DeviceInfoMap">
+        select
+          dev_id, branch_id, branch_name, ip, visit_time, create_time, retain1, retain2, retain3, retain4, retain5, retain6, retain7, retain8, retain9, retain10, id
+        from device_info
+        <where>
+            <if test="devId != null and devId != ''">
+                and dev_id = #{devId}
+            </if>
+            <if test="branchId != null and branchId != ''">
+                and branch_id = #{branchId}
+            </if>
+            <if test="branchName != null and branchName != ''">
+                and branch_name = #{branchName}
+            </if>
+            <if test="ip != null and ip != ''">
+                and ip = #{ip}
+            </if>
+            <if test="visitTime != null">
+                and visit_time = #{visitTime}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="retain1 != null and retain1 != ''">
+                and retain1 = #{retain1}
+            </if>
+            <if test="retain2 != null and retain2 != ''">
+                and retain2 = #{retain2}
+            </if>
+            <if test="retain3 != null and retain3 != ''">
+                and retain3 = #{retain3}
+            </if>
+            <if test="retain4 != null and retain4 != ''">
+                and retain4 = #{retain4}
+            </if>
+            <if test="retain5 != null and retain5 != ''">
+                and retain5 = #{retain5}
+            </if>
+            <if test="retain6 != null and retain6 != ''">
+                and retain6 = #{retain6}
+            </if>
+            <if test="retain7 != null and retain7 != ''">
+                and retain7 = #{retain7}
+            </if>
+            <if test="retain8 != null and retain8 != ''">
+                and retain8 = #{retain8}
+            </if>
+            <if test="retain9 != null and retain9 != ''">
+                and retain9 = #{retain9}
+            </if>
+            <if test="retain10 != null and retain10 != ''">
+                and retain10 = #{retain10}
+            </if>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+        </where>
+--         limit #{page.}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from device_info
+        <where>
+            <if test="devId != null and devId != ''">
+                and dev_id = #{devId}
+            </if>
+            <if test="branchId != null and branchId != ''">
+                and branch_id = #{branchId}
+            </if>
+            <if test="branchName != null and branchName != ''">
+                and branch_name = #{branchName}
+            </if>
+            <if test="ip != null and ip != ''">
+                and ip = #{ip}
+            </if>
+            <if test="visitTime != null">
+                and visit_time = #{visitTime}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="retain1 != null and retain1 != ''">
+                and retain1 = #{retain1}
+            </if>
+            <if test="retain2 != null and retain2 != ''">
+                and retain2 = #{retain2}
+            </if>
+            <if test="retain3 != null and retain3 != ''">
+                and retain3 = #{retain3}
+            </if>
+            <if test="retain4 != null and retain4 != ''">
+                and retain4 = #{retain4}
+            </if>
+            <if test="retain5 != null and retain5 != ''">
+                and retain5 = #{retain5}
+            </if>
+            <if test="retain6 != null and retain6 != ''">
+                and retain6 = #{retain6}
+            </if>
+            <if test="retain7 != null and retain7 != ''">
+                and retain7 = #{retain7}
+            </if>
+            <if test="retain8 != null and retain8 != ''">
+                and retain8 = #{retain8}
+            </if>
+            <if test="retain9 != null and retain9 != ''">
+                and retain9 = #{retain9}
+            </if>
+            <if test="retain10 != null and retain10 != ''">
+                and retain10 = #{retain10}
+            </if>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+        </where>
+    </select>
+    <select id="getVisitTime" resultType="java.util.Date">
+        select
+            visit_time
+        from device_info
+        where  dev_id=#{devId}
+            limit 1
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into device_info(dev_id, branch_id, branch_name, ip, visit_time, create_time, retain1, retain2, retain3, retain4, retain5, retain6, retain7, retain8, retain9, retain10)
+        values (#{devId}, #{branchId}, #{branchName}, #{ip}, #{visitTime}, #{createTime}, #{retain1}, #{retain2}, #{retain3}, #{retain4}, #{retain5}, #{retain6}, #{retain7}, #{retain8}, #{retain9}, #{retain10})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into device_info(dev_id, branch_id, branch_name, ip, visit_time, create_time, retain1, retain2, retain3, retain4, retain5, retain6, retain7, retain8, retain9, retain10)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.devId}, #{entity.branchId}, #{entity.branchName}, #{entity.ip}, #{entity.visitTime}, #{entity.createTime}, #{entity.retain1}, #{entity.retain2}, #{entity.retain3}, #{entity.retain4}, #{entity.retain5}, #{entity.retain6}, #{entity.retain7}, #{entity.retain8}, #{entity.retain9}, #{entity.retain10})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into device_info(dev_id, branch_id, branch_name, ip, visit_time, create_time, retain1, retain2, retain3, retain4, retain5, retain6, retain7, retain8, retain9, retain10)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.devId}, #{entity.branchId}, #{entity.branchName}, #{entity.ip}, #{entity.visitTime}, #{entity.createTime}, #{entity.retain1}, #{entity.retain2}, #{entity.retain3}, #{entity.retain4}, #{entity.retain5}, #{entity.retain6}, #{entity.retain7}, #{entity.retain8}, #{entity.retain9}, #{entity.retain10})
+        </foreach>
+        on duplicate key update
+        dev_id = values(dev_id),
+        branch_id = values(branch_id),
+        branch_name = values(branch_name),
+        ip = values(ip),
+        visit_time = values(visit_time),
+        create_time = values(create_time),
+        retain1 = values(retain1),
+        retain2 = values(retain2),
+        retain3 = values(retain3),
+        retain4 = values(retain4),
+        retain5 = values(retain5),
+        retain6 = values(retain6),
+        retain7 = values(retain7),
+        retain8 = values(retain8),
+        retain9 = values(retain9),
+        retain10 = values(retain10)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update device_info
+        <set>
+            <if test="devId != null and devId != ''">
+                dev_id = #{devId},
+            </if>
+            <if test="branchId != null and branchId != ''">
+                branch_id = #{branchId},
+            </if>
+            <if test="branchName != null and branchName != ''">
+                branch_name = #{branchName},
+            </if>
+            <if test="ip != null and ip != ''">
+                ip = #{ip},
+            </if>
+            <if test="visitTime != null">
+                visit_time = #{visitTime},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="retain1 != null and retain1 != ''">
+                retain1 = #{retain1},
+            </if>
+            <if test="retain2 != null and retain2 != ''">
+                retain2 = #{retain2},
+            </if>
+            <if test="retain3 != null and retain3 != ''">
+                retain3 = #{retain3},
+            </if>
+            <if test="retain4 != null and retain4 != ''">
+                retain4 = #{retain4},
+            </if>
+            <if test="retain5 != null and retain5 != ''">
+                retain5 = #{retain5},
+            </if>
+            <if test="retain6 != null and retain6 != ''">
+                retain6 = #{retain6},
+            </if>
+            <if test="retain7 != null and retain7 != ''">
+                retain7 = #{retain7},
+            </if>
+            <if test="retain8 != null and retain8 != ''">
+                retain8 = #{retain8},
+            </if>
+            <if test="retain9 != null and retain9 != ''">
+                retain9 = #{retain9},
+            </if>
+            <if test="retain10 != null and retain10 != ''">
+                retain10 = #{retain10},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from device_info where id = #{id}
+    </delete>
+
+</mapper>
+

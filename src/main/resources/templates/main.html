@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header('首页')"></head>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="gray-bg">
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>使用说明</h5>
+        </div>
+        <div class="ibox-content">
+            <p><i class="fa fa-send-o"></i> 1.更新包命名个格式最好为版本号命名,例如：App_V1.0.1.exe,更新名不能存在中文，否则会报错，无法下载到更新包。</a>
+            </p>
+            <p><i class="fa fa-send-o"></i> 2.更新包应为上一代更新包的增加数字版本,避免内部文件产生错误。 </a>
+            </p>
+            <p><i class="fa fa-send-o"></i> 3.上传更新包失败请检查更新包命名是否有问题。</a>
+            </p>
+            <p><i class="fa fa-send-o"></i> 4.暂时更新包系统只适用于全省,或个别设备的更新包更换，暂不支持分地区更换更新。</a>
+            </p>
+            <p><i class="fa fa-send-o"></i> 5.重名的更新包文件会将服务器上的文件顶替，不同设备的日志压缩包不影响。 </a>
+            </p>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxjr.yxjrsqlitedemo.dao.UploadPackageDao">
+
+    <resultMap type="com.yxjr.yxjrsqlitedemo.entity.UploadPackage" id="UploadPackageMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="devId" column="dev_id" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="VARCHAR"/>
+        <result property="packageName" column="package_name" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="uploadTime" column="upload_time" jdbcType="TIMESTAMP"/>
+        <result property="batchno" column="batchNo" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="retain1" column="retain1" jdbcType="VARCHAR"/>
+        <result property="retain2" column="retain2" jdbcType="VARCHAR"/>
+        <result property="retain3" column="retain3" jdbcType="VARCHAR"/>
+        <result property="retain4" column="retain4" jdbcType="VARCHAR"/>
+        <result property="retain5" column="retain5" jdbcType="VARCHAR"/>
+        <result property="retain6" column="retain6" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+    <select id="getVersion" resultMap="UploadPackageMap">
+        select
+               *
+        from upload_package
+        where status=0 or dev_id=#{devId}
+        order by upload_time desc
+        limit 1
+    </select>
+
+    <!--    &lt;!&ndash;查询单个&ndash;&gt;-->
+<!--    <select id="queryById" resultMap="UploadPackageMap">-->
+<!--        select-->
+<!--          id, devId, version, package_name, url, upload_time, batchNo, status, retain1, retain2, retain3, retain4, retain5, retain6-->
+<!--        from upload_package-->
+<!--        where id = #{id}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;查询指定行数据&ndash;&gt;-->
+<!--    <select id="queryAllByLimit" resultMap="UploadPackageMap">-->
+<!--        select-->
+<!--          id, devId, version, package_name, url, upload_time, batchNo, status, retain1, retain2, retain3, retain4, retain5, retain6-->
+<!--        from upload_package-->
+<!--        <where>-->
+<!--            <if test="id != null">-->
+<!--                and id = #{id}-->
+<!--            </if>-->
+<!--            <if test="devid != null and devid != ''">-->
+<!--                and devId = #{devid}-->
+<!--            </if>-->
+<!--            <if test="version != null and version != ''">-->
+<!--                and version = #{version}-->
+<!--            </if>-->
+<!--            <if test="packageName != null and packageName != ''">-->
+<!--                and package_name = #{packageName}-->
+<!--            </if>-->
+<!--            <if test="url != null and url != ''">-->
+<!--                and url = #{url}-->
+<!--            </if>-->
+<!--            <if test="uploadTime != null">-->
+<!--                and upload_time = #{uploadTime}-->
+<!--            </if>-->
+<!--            <if test="batchno != null and batchno != ''">-->
+<!--                and batchNo = #{batchno}-->
+<!--            </if>-->
+<!--            <if test="status != null">-->
+<!--                and status = #{status}-->
+<!--            </if>-->
+<!--            <if test="retain1 != null and retain1 != ''">-->
+<!--                and retain1 = #{retain1}-->
+<!--            </if>-->
+<!--            <if test="retain2 != null and retain2 != ''">-->
+<!--                and retain2 = #{retain2}-->
+<!--            </if>-->
+<!--            <if test="retain3 != null and retain3 != ''">-->
+<!--                and retain3 = #{retain3}-->
+<!--            </if>-->
+<!--            <if test="retain4 != null and retain4 != ''">-->
+<!--                and retain4 = #{retain4}-->
+<!--            </if>-->
+<!--            <if test="retain5 != null and retain5 != ''">-->
+<!--                and retain5 = #{retain5}-->
+<!--            </if>-->
+<!--            <if test="retain6 != null and retain6 != ''">-->
+<!--                and retain6 = #{retain6}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        limit #{pageable.offset}, #{pageable.pageSize}-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;统计总行数&ndash;&gt;-->
+<!--    <select id="count" resultType="java.lang.Long">-->
+<!--        select count(1)-->
+<!--        from upload_package-->
+<!--        <where>-->
+<!--            <if test="id != null">-->
+<!--                and id = #{id}-->
+<!--            </if>-->
+<!--            <if test="devid != null and devid != ''">-->
+<!--                and devId = #{devid}-->
+<!--            </if>-->
+<!--            <if test="version != null and version != ''">-->
+<!--                and version = #{version}-->
+<!--            </if>-->
+<!--            <if test="packageName != null and packageName != ''">-->
+<!--                and package_name = #{packageName}-->
+<!--            </if>-->
+<!--            <if test="url != null and url != ''">-->
+<!--                and url = #{url}-->
+<!--            </if>-->
+<!--            <if test="uploadTime != null">-->
+<!--                and upload_time = #{uploadTime}-->
+<!--            </if>-->
+<!--            <if test="batchno != null and batchno != ''">-->
+<!--                and batchNo = #{batchno}-->
+<!--            </if>-->
+<!--            <if test="status != null">-->
+<!--                and status = #{status}-->
+<!--            </if>-->
+<!--            <if test="retain1 != null and retain1 != ''">-->
+<!--                and retain1 = #{retain1}-->
+<!--            </if>-->
+<!--            <if test="retain2 != null and retain2 != ''">-->
+<!--                and retain2 = #{retain2}-->
+<!--            </if>-->
+<!--            <if test="retain3 != null and retain3 != ''">-->
+<!--                and retain3 = #{retain3}-->
+<!--            </if>-->
+<!--            <if test="retain4 != null and retain4 != ''">-->
+<!--                and retain4 = #{retain4}-->
+<!--            </if>-->
+<!--            <if test="retain5 != null and retain5 != ''">-->
+<!--                and retain5 = #{retain5}-->
+<!--            </if>-->
+<!--            <if test="retain6 != null and retain6 != ''">-->
+<!--                and retain6 = #{retain6}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+<!--    &lt;!&ndash;新增所有列&ndash;&gt;-->
+<!--    <insert id="insert" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into upload_package(devId, version, package_name, url, upload_time, batchNo, status, retain1, retain2, retain3, retain4, retain5, retain6)-->
+<!--        values (#{devid}, #{version}, #{packageName}, #{url}, #{uploadTime}, #{batchno}, #{status}, #{retain1}, #{retain2}, #{retain3}, #{retain4}, #{retain5}, #{retain6})-->
+<!--    </insert>-->
+
+<!--    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into upload_package(devId, version, package_name, url, upload_time, batchNo, status, retain1, retain2, retain3, retain4, retain5, retain6)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--        (#{entity.devid}, #{entity.version}, #{entity.packageName}, #{entity.url}, #{entity.uploadTime}, #{entity.batchno}, #{entity.status}, #{entity.retain1}, #{entity.retain2}, #{entity.retain3}, #{entity.retain4}, #{entity.retain5}, #{entity.retain6})-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+<!--    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into upload_package(devId, version, package_name, url, upload_time, batchNo, status, retain1, retain2, retain3, retain4, retain5, retain6)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--            (#{entity.devid}, #{entity.version}, #{entity.packageName}, #{entity.url}, #{entity.uploadTime}, #{entity.batchno}, #{entity.status}, #{entity.retain1}, #{entity.retain2}, #{entity.retain3}, #{entity.retain4}, #{entity.retain5}, #{entity.retain6})-->
+<!--        </foreach>-->
+<!--        on duplicate key update-->
+<!--        devId = values(devId),-->
+<!--        version = values(version),-->
+<!--        package_name = values(package_name),-->
+<!--        url = values(url),-->
+<!--        upload_time = values(upload_time),-->
+<!--        batchNo = values(batchNo),-->
+<!--        status = values(status),-->
+<!--        retain1 = values(retain1),-->
+<!--        retain2 = values(retain2),-->
+<!--        retain3 = values(retain3),-->
+<!--        retain4 = values(retain4),-->
+<!--        retain5 = values(retain5),-->
+<!--        retain6 = values(retain6)-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash;通过主键修改数据&ndash;&gt;-->
+<!--    <update id="update">-->
+<!--        update upload_package-->
+<!--        <set>-->
+<!--            <if test="devid != null and devid != ''">-->
+<!--                devId = #{devid},-->
+<!--            </if>-->
+<!--            <if test="version != null and version != ''">-->
+<!--                version = #{version},-->
+<!--            </if>-->
+<!--            <if test="packageName != null and packageName != ''">-->
+<!--                package_name = #{packageName},-->
+<!--            </if>-->
+<!--            <if test="url != null and url != ''">-->
+<!--                url = #{url},-->
+<!--            </if>-->
+<!--            <if test="uploadTime != null">-->
+<!--                upload_time = #{uploadTime},-->
+<!--            </if>-->
+<!--            <if test="batchno != null and batchno != ''">-->
+<!--                batchNo = #{batchno},-->
+<!--            </if>-->
+<!--            <if test="status != null">-->
+<!--                status = #{status},-->
+<!--            </if>-->
+<!--            <if test="retain1 != null and retain1 != ''">-->
+<!--                retain1 = #{retain1},-->
+<!--            </if>-->
+<!--            <if test="retain2 != null and retain2 != ''">-->
+<!--                retain2 = #{retain2},-->
+<!--            </if>-->
+<!--            <if test="retain3 != null and retain3 != ''">-->
+<!--                retain3 = #{retain3},-->
+<!--            </if>-->
+<!--            <if test="retain4 != null and retain4 != ''">-->
+<!--                retain4 = #{retain4},-->
+<!--            </if>-->
+<!--            <if test="retain5 != null and retain5 != ''">-->
+<!--                retain5 = #{retain5},-->
+<!--            </if>-->
+<!--            <if test="retain6 != null and retain6 != ''">-->
+<!--                retain6 = #{retain6},-->
+<!--            </if>-->
+<!--        </set>-->
+<!--        where id = #{id}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash;通过主键删除&ndash;&gt;-->
+<!--    <delete id="deleteById">-->
+<!--        delete from upload_package where id = #{id}-->
+<!--    </delete>-->
+
+</mapper>
+
