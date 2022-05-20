@@ -184,8 +184,8 @@ public class LogPackageController extends ApiController {
     /**
      * 删除服务器上一个月之前的日志文件
      */
+    @DeleteMapping("/deleteLog")
     @ResponseBody
-    @GetMapping("/deleteLog")
     public JSONObject deleteLog() {
         logger.info("开始删除一个月前日志文件");
         JSONObject res = new JSONObject();
