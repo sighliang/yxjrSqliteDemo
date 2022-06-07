@@ -19,6 +19,9 @@ public class UploadConfig {
     @Value(value = "${dbPath}")
     private String dbPath;
 
+    @Value(value = "${serverIp}")
+    private String ip;
+
     public String getLogPath() {
         return logPath;
     }
@@ -49,5 +52,13 @@ public class UploadConfig {
 
     public void setDbPath(String dbPath) {
         this.dbPath = dbPath;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

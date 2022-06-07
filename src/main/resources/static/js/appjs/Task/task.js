@@ -89,9 +89,9 @@ function load() {
                 exportTypes:['excel'],//导出文件类型，[ 'csv', 'txt', 'sql', 'doc', 'excel', 'xlsx', 'pdf']
                 exportOptions:{
                     ignoreColumn: [0,5],            //忽略某一列的索引
-                    fileName: '更新包表',              //文件名称设置
+                    fileName: '任务信息表',              //文件名称设置
                     worksheetName: 'Sheet1',          //表格工作区名称
-                    tableName: '更新包表',
+                    tableName: '任务信息表',
                     excelstyles: ['background-color', 'color', 'font-size', 'font-weight'],
                 }
             });

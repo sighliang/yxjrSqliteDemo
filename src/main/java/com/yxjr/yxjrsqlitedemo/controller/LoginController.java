@@ -18,8 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("")
 public class LoginController{
+
+    @RequestMapping()
+    public String Index(Model model){
+        User user = ShiroUtils.getSysUser();
+        model.addAttribute("user",user);
+        return "index";
+    }
     //跳到首页
-    @RequestMapping({ "/index"})
+    @RequestMapping("index")
     public String toIndex(Model model){
         User user = ShiroUtils.getSysUser();
         model.addAttribute("user",user);

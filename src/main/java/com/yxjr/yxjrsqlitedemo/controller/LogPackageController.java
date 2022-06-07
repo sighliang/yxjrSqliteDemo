@@ -170,8 +170,7 @@ public class LogPackageController extends ApiController {
             JSONObject retJson = JSONObject.fromObject(ret);
             if("OK".equals(retJson.get("retCode"))){
                 String fileName=retJson.get("fileName").toString();
-                InetAddress ip4 = Inet4Address.getLocalHost();
-                String download="http://"+ip4.getHostAddress()+":"+uploadConfig.getPort()+"/common/downloadLog/"+devId+"/"+fileName;
+                String download="http://"+uploadConfig.getIp()+":"+uploadConfig.getPort()+"/common/downloadLog/"+devId+"/"+fileName;
                 return success(download);
             }
             return R.failed("提取日志失败");

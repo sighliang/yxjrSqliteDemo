@@ -29,13 +29,13 @@ function load() {
                 sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者
                 // "server"
                 queryParams : function(params) {
-                    let devId=$('#devId').val();
+                    let userName=$('#userName').val();
                     let param={
                         size:params.limit,
                         current:params.offset/params.limit+1
                     }
-                    if(devId !='' && devId !=null){
-                        param.devId=devId
+                    if(userName !='' && userName !=null){
+                        param.userName=userName
                     }
                     return param;
                 },

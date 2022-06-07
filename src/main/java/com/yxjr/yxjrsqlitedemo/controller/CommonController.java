@@ -175,8 +175,8 @@ public class CommonController extends ApiController {
      * @param devId
      * @return
      */
-    @GetMapping("/queryVersion")
-    public JSONObject queryVersion(String devId){
+    @GetMapping("/queryVersion/{devId}")
+    public JSONObject queryVersion(@PathVariable("devId") String devId){
         logger.info("设备获取版本号");
         return uploadPackageService.queryVersion(devId);
     }

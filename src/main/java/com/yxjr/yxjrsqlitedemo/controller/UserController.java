@@ -24,7 +24,7 @@ import java.io.Serializable;
 @RequestMapping("user")
 public class UserController extends ApiController {
 
-    private final String prefix="user/";
+    private final String prefix="User/";
     /**
      * 服务对象
      */
@@ -98,7 +98,7 @@ public class UserController extends ApiController {
     @PutMapping
     @ResponseBody
     public R update(User user) {
-        if("admin".equals(user.getUserName())){
+        if(user.getId()==1){
             return R.failed("admin用户不允许修改密码");
         }
         return success(this.userService.updateById(user));

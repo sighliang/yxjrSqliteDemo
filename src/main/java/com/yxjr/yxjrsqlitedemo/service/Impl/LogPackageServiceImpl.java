@@ -43,8 +43,7 @@ public class LogPackageServiceImpl extends ServiceImpl<LogPackageDao, LogPackage
             logPackage.setLogName(logName);
             logPackage.setUploadTime(new Date());
             logPackage.setDevId(devId);
-            InetAddress ip4 = Inet4Address.getLocalHost();
-            String url="http://"+ip4.getHostAddress()+":"+uploadConfig.getPort()+"/common/downloadLog/"+devId+"/"+logName;
+            String url="http://"+uploadConfig.getIp()+":"+uploadConfig.getPort()+"/common/downloadLog/"+devId+"/"+logName;
             logPackage.setUrl(url);
             return this.save(logPackage);
         }catch (Exception e){

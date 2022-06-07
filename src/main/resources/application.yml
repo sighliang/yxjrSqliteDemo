@@ -25,7 +25,11 @@ spring:
     password:
 
 server:
-  port: 9257
+  port: 7701
+
+#测试地址为 128.1.116.244 正式地址为56.0.48.55
+#serverIp: 56.0.48.55
+serverIp: 128.1.116.244
 
 logging:
   config: classpath:logback-spring.xml
@@ -35,6 +39,7 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: mapper/*.xml
   typeAliasesPackage: com.yxjr.**.entity
+
 
 
 
@@ -49,5 +54,6 @@ logPath:  /home/weblogic/yxjrApp/Logs/
 
   #数据库存放地址
 #dbPath: E:\test\yxjrSqliteDemo\sql.db
+#dbPath: D:\update\sql.db
 dbPath: /home/weblogic/yxjrApp/sql.db
 
