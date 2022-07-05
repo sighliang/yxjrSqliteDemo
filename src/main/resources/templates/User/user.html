@@ -5,11 +5,9 @@
 <body>
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
-    <div class="col-sm-8">
+    <div class="col-sm-11">
         <div class="ibox">
             <div class="ibox-body">
-                <div class="col-sm-12 search-choice-focus">
-                </div>
                 <div class="fixed-table-toolbar">
                     <div class="columns pull-left">
                         <button  type="button"
@@ -17,16 +15,19 @@
                             <i class="fa fa-plus hidden" aria-hidden="true"></i>添加
                         </button>
                     </div>
-                    <div class="columns pull-right">
-                        <button class="btn btn-success" onclick="reLoad()">查询</button>
-                    </div>
-                    <div class="columns pull-right col-md-2 nopadding">
-                        <input id="userName" type="text" class="form-control"
-                               placeholder="用户名">
-                    </div>
+                    <form class="form-inline">
+                        <div class="form-group pull-right">
+                            <button class="btn btn-success" onclick="reLoad()">查询</button>
+                        </div>
+                        <div class="form-group pull-right">
+                            <label class="label" style="margin-left: 15px">用户名：</label>
+                            <input id="userName" type="text" class="form-control"
+                                   placeholder="用户名">
+                        </div>
+                        <table id="exampleTable" data-mobile-responsive="true">
+                        </table>
+                    </form>
                 </div>
-                <table id="exampleTable" data-mobile-responsive="true">
-                </table>
             </div>
         </div>
     </div>
@@ -34,6 +35,6 @@
 </div>
 </body>
 <div th:include="include :: footer"></div>
-<script type="text/javascript" src="/js/appjs/User/user.js"></script>
+<script type="text/javascript" src="/yxjr/js/appjs/User/user.js"></script>
 </body>
 </html>

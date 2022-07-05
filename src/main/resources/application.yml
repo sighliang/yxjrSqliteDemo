@@ -1,4 +1,4 @@
-# 应用名称
+#上传文件的限制
 spring:
   servlet:
     multipart:
@@ -19,21 +19,25 @@ spring:
 #    content-type: text/html
   datasource:
     driver-class-name: org.sqlite.JDBC
-#    url: jdbc:sqlite:E:\test\yxjrSqliteDemo\sql.db
-    url: jdbc:sqlite:/home/weblogic/yxjrApp/sql.db
+    url: jdbc:sqlite:D:\home\sysmon\UPDATE\yxjrApp\sql.db
+#    url: jdbc:sqlite:/home/sysmon/UPDATE/yxjrApp/sql.db
     username:
     password:
 
+#端口和上下文，注，weblogic的war包情况下需要将context-path注释
 server:
-  port: 7701
+  port: 7007
+  servlet:
+    context-path: /yxjr
 
 #测试地址为 128.1.116.244 正式地址为56.0.48.55
 #serverIp: 56.0.48.55
-serverIp: 128.1.116.244
+serverIp: 127.0.0.1
 
+#日志
 logging:
   config: classpath:logback-spring.xml
-
+#mapper
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
@@ -43,17 +47,17 @@ mybatis:
 
 
 
-#文件上传路径 linux /home/weblogic/yxjrApp/upgrade/      windows D:/update/
+#文件上传路径 linux /home/sysmon/UPDATE/yxjrApp/upgrade/      windows D:/update/
 #uploadpacketPath: D:/update/
-uploadpacketPath: /home/weblogic/yxjrApp/upgrade/
+uploadpacketPath: /home/sysmon/UPDATE/yxjrApp/upgrade/
 
 
-  #日志上传路径 linux /home/weblogic/yxjrApp/Logs/  windows D:/update/Logs/
+  #日志上传路径 linux  /home/sysmon/UPDATE/yxjrApp/Logs/  windows D:/update/Logs/
 #logPath: D:/update/Logs/
-logPath:  /home/weblogic/yxjrApp/Logs/
+logPath:  /home/sysmon/UPDATE/yxjrApp/Logs/
 
-  #数据库存放地址
+  #数据库存放地址 linux  /home/sysmon/UPDATE/yxjrApp/sql.db windows  D:\update\sql.db
 #dbPath: E:\test\yxjrSqliteDemo\sql.db
-#dbPath: D:\update\sql.db
-dbPath: /home/weblogic/yxjrApp/sql.db
+dbPath: D:\update\sql.db
+#dbPath: /home/sysmon/UPDATE/yxjrApp/sql.db
 

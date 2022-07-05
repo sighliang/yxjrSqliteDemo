@@ -1,4 +1,4 @@
-let prefix="/taskInfo"
+let prefix="/yxjr/taskInfo"
 $(function() {
     load();
 });

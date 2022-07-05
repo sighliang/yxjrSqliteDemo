@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yxjr.yxjrsqlitedemo.dao.UploadPackageDao">
+<mapper namespace="com.yxjr.yxjrDevOps.dao.UploadPackageDao">
 
-    <resultMap type="com.yxjr.yxjrsqlitedemo.entity.UploadPackage" id="UploadPackageMap">
+    <resultMap type="com.yxjr.yxjrDevOps.entity.UploadPackage" id="UploadPackageMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="devId" column="dev_id" jdbcType="VARCHAR"/>
         <result property="version" column="version" jdbcType="VARCHAR"/>
@@ -140,10 +140,10 @@
 <!--        </where>-->
 <!--    </select>-->
 
-<!--    &lt;!&ndash;新增所有列&ndash;&gt;-->
-<!--    <insert id="insert" keyProperty="id" useGeneratedKeys="true">-->
-<!--        insert into upload_package(devId, version, package_name, url, upload_time, batchNo, status, retain1, retain2, retain3, retain4, retain5, retain6)-->
-<!--        values (#{devid}, #{version}, #{packageName}, #{url}, #{uploadTime}, #{batchno}, #{status}, #{retain1}, #{retain2}, #{retain3}, #{retain4}, #{retain5}, #{retain6})-->
+    <!--新增所有列-->
+<!--    <insert id="save" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into upload_package(version, package_name, url, upload_time, batchNo, status, retain1, retain2, retain3, retain4, retain5, retain6)-->
+<!--        values (#{version}, #{packageName}, #{url}, #{uploadTime}, #{batchno}, #{status}, #{retain1}, #{retain2}, #{retain3}, #{retain4}, #{retain5}, #{retain6})-->
 <!--    </insert>-->
 
 <!--    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">-->

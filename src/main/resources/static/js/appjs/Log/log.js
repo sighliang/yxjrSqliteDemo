@@ -1,4 +1,4 @@
-let prefix="/logPackage"
+let prefix="/yxjr/logPackage"
 $(function() {
     load();
 });

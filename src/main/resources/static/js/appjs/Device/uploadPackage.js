@@ -1,4 +1,4 @@
-let prefix="/deviceInfo"
+let prefix="/yxjr/deviceInfo"
 $(function() {
     load();
 });
@@ -121,7 +121,7 @@ function upload() {
             type : 'post',
             dataType: "json",
             data : formData,
-            url :  '/uploadPackage',
+            url :  '/yxjr/uploadPackage',
             processData: false,//不去处理发送的数据
             contentType: false,//不去设置Content-Type请求头
             success : function(r) {

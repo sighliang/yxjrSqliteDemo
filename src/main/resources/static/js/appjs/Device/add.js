@@ -11,7 +11,7 @@ function save() {
     $.ajax({
         cache : true,
         type : "POST",
-        url : "/deviceInfo",
+        url : "/yxjr/deviceInfo",
         data : $('#form-info-add').serialize(),// 你的formid
         async : false,
         error : function(request) {
@@ -23,6 +23,7 @@ function save() {
                 parent.reLoad();
                 var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
                 parent.layer.close(index);
+
             } else {
                 parent.layer.alert(data.msg)
             }

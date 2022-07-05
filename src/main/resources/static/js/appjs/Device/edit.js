@@ -11,7 +11,7 @@ function update() {
     $.ajax({
         cache : true,
         type : "PUT",
-        url : "/deviceInfo",
+        url : "/yxjr/deviceInfo",
         data : $('#form-info-edit').serialize(),// 你的formid
         async : false,
         error : function(request) {

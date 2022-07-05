@@ -1,4 +1,4 @@
-let prefix="/uploadPackage"
+let prefix="/yxjr/uploadPackage"
 $(function() {
     load();
 });

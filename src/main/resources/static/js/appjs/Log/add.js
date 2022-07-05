@@ -1,4 +1,4 @@
-let prefix="/deviceInfo"
+let prefix="/yxjr/deviceInfo"
 $(function() {
     load();
 });
@@ -112,13 +112,16 @@ function upload() {
             type : 'post',
             dataType: "json",
             data :formData,
-            url :  '/logPackage/getLog',
+            url :  '/yxjr/logPackage/getLog',
             processData: false,//不去处理发送的数据
             contentType: false,//不去设置Content-Type请求头
             success : function(r) {
                 if (r.code == 0) {
                     layer.msg("日志提取成功");
                     window.location.href=r.data;
+                    parent.reLoad();
+                    var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                    parent.layer.close(index);
                 } else {
                     layer.msg(r.msg);
                 }

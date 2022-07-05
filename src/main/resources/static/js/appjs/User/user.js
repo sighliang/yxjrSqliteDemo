@@ -1,4 +1,4 @@
-let prefix="/user"
+let prefix="/yxjr/user"
 $(function() {
     load();
 });

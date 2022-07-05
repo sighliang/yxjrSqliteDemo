@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
-      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" xmlns="http://www.w3.org/1999/html">
 <head th:include="include :: header('日志更新表')"></head>
 <body>
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
-    <div class="col-sm-8">
+    <div class="col-sm-11">
         <div class="ibox">
             <div class="ibox-body">
-                <div class="col-sm-12 search-choice-focus">
-                </div>
                 <div class="fixed-table-toolbar">
                     <div class="columns pull-left">
                         <button  type="button"
@@ -17,27 +15,30 @@
                             <i class="fa fa-trash hidden" aria-hidden="true"></i>提取日志
                         </button>
                     </div>
-                    <div class="columns pull-right">
-                        <button class="btn btn-success" onclick="reLoad()">查询</button>
-                    </div>
-                    <div class="columns pull-right col-md-2 ">
-                        <input id="devId" type="text" class="form-control"
-                               placeholder="设备编号">
-                    </div>
-                    <div class="columns pull-right col-md-2 ">
-                        <input id="logName" type="text" class="form-control"
-                               placeholder="日志包名">
-                    </div>
+                    <form class="form-inline">
+                        <div class="form-group pull-right">
+                            <button class="btn btn-success" onclick="reLoad()">查询</button>
+                        </div>
+                        <div class="form-group pull-right">
+                            <label class="label" style="margin-left: 15px">设备编号：</label>
+                            <input id="devId" type="text" class="form-control"
+                                   placeholder="设备编号">
+                        </div>
+                        <div class="form-group pull-right">
+                            <label class="label" style="margin-left: 15px">日志包名：</label>
+                            <input id="logName" type="text" class="form-control"
+                                   placeholder="日志包名">
+                        </div>
+                        <table id="exampleTable" data-mobile-responsive="true">
+                        </table>
+                    </form>
                 </div>
-                <table id="exampleTable" data-mobile-responsive="true">
-                </table>
             </div>
         </div>
     </div>
 </div>
-</div>
 </body>
 <div th:include="include :: footer"></div>
-<script type="text/javascript" src="/js/appjs/Log/log.js"></script>
+<script type="text/javascript" src="/yxjr/js/appjs/Log/log.js"></script>
 </body>
 </html>

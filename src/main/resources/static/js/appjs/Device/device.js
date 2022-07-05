@@ -1,4 +1,4 @@
-let prefix="/deviceInfo"
+let prefix="/yxjr/deviceInfo"
 $(function() {
     load();
 });

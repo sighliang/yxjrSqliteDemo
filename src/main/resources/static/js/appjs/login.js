@@ -18,7 +18,7 @@ function login() {
     $.ajax({
         cache : true,
         type : "POST",
-        url : "/login",
+        url : "/yxjr/login",
         data : {
             "userName":userName,
             "password":password

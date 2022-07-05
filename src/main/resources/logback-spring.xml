@@ -8,9 +8,9 @@
     <property name="LOG_PATTERN" value="%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
 
     <!-- 定义日志存储的路径，不要配置相对路径 -->
-    <property name="FILE_PATH" value="/home/weblogic/yxjrApp/log/yxgdjh-log.%d{yyyy-MM-dd}.%i.log" />
+    <property name="FILE_PATH" value="/home/sysmon/UPDATE/yxjrApp/log/yxgdjh-log.%d{yyyy-MM-dd}.%i.log" />
     <!-- 定义错误日志存储的路径，不要配置相对路径 -->
-    <property name="ERROR_PATH" value="/home/weblogic/yxjrApp/log/" />
+    <property name="ERROR_PATH" value="/home/sysmon/UPDATE/yxjrApp/log/" />
     <!-- 控制台输出日志 -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!-- 日志级别过滤INFO以下 -->

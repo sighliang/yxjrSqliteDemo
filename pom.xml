@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yxjr</groupId>
-    <artifactId>yxjrSqliteDemo</artifactId>
+    <artifactId>yxjrDevOps</artifactId>
     <version>1.0.0</version>
-    <name>yxjrSqliteDemo</name>
+    <name>yxjrDevOps</name>
     <packaging>war</packaging>
     <description>Demo project for Spring Boot</description>
     <properties>

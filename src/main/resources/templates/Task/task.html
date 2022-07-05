@@ -5,37 +5,32 @@
 <body>
 <body class="gray-bg">
 <div class="wrapper wrapper-content ">
-    <div class="col-sm-8">
+    <div class="col-sm-11">
         <div class="ibox">
             <div class="ibox-body">
-                <div class="col-sm-12 search-choice-focus">
-                    <div class="columns pull-right col-md-4">
+                <form class="form-inline">
+                    <div class="form-group pull-right">
                         <button class="btn btn-success" onclick="Count()">统计</button>
                     </div>
-                    <div class="columns pull-right col-md-2 ">
+                    <div class="columns pull-right">
+                        <label class="label" style="margin-left: 15px">时间范围：</label>
                         <input id="endTime" type="date" class="form-control"
                                placeholder="结束时间">
-                    </div>
-                    <div class="columns pull-right">
                         <span>-</span>
-                    </div>
-                    <div class="columns pull-right col-md-2 ">
                         <input id="beginTime" type="date" class="form-control"
                                placeholder="开始时间">
                     </div>
-                    <div class="columns pull-right ">
-                        <label class="control-label">时间范围：</label>
-                    </div>
-                </div>
-                <div class="fixed-table-toolbar">
-                    <div class="columns pull-right">
+                </form>
+                <form class="form-inline">
+                    <div class="form-group pull-right">
                         <button class="btn btn-success" onclick="reLoad()">查询</button>
                     </div>
-                    <div class="columns pull-right col-md-2 ">
+                    <div class="form-group pull-right">
+                        <label class="label" style="margin-left: 15px">设备编号：</label>
                         <input id="devId" type="text" class="form-control"
                                placeholder="设备编号">
                     </div>
-                </div>
+                </form>
                 <table id="exampleTable" data-mobile-responsive="true">
                 </table>
             </div>
@@ -45,6 +40,6 @@
 </div>
 </body>
 <div th:include="include :: footer"></div>
-<script type="text/javascript" src="/js/appjs/Task/task.js"></script>
+<script type="text/javascript" src="/yxjr/js/appjs/Task/task.js"></script>
 </body>
 </html>

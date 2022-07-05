@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yxjr.yxjrsqlitedemo.dao.LogPackageDao">
+<mapper namespace="com.yxjr.yxjrDevOps.dao.LogPackageDao">
 
-    <resultMap type="com.yxjr.yxjrsqlitedemo.entity.LogPackage" id="LogPackageMap">
+    <resultMap type="com.yxjr.yxjrDevOps.entity.LogPackage" id="LogPackageMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="logName" column="log_name" jdbcType="VARCHAR"/>
         <result property="uploadTime" column="upload_time" jdbcType="TIMESTAMP"/>
