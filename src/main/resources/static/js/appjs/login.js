@@ -1,12 +1,26 @@
+$(function() {
+    $("#imgVerify").click();
+});
 
 function keyLogin(){
     if (event.keyCode===13)  //回车键的键值为13
         document.getElementById("loginBtn").click();
 }
 
+//获取验证码
+function getVerify(obj) {
+    obj.src = "/yxjr/getCode?" + Math.random();
+    $("#verify").val("");
+}
+
+function reLoad() {
+    $('#deviceTable').bootstrapTable('refresh');
+}
+
 function login() {
     let userName=$("#userName").val();
     let password=$("#password").val();
+    let verify=$("#verify").val();
     if(userName==null || userName==""){
         parent.layer.msg("请输入用户名");
         return;
@@ -21,7 +35,8 @@ function login() {
         url : "/yxjr/login",
         data : {
             "userName":userName,
-            "password":password
+            "password":password,
+            "verify":verify
         },
         async : false,
         error : function(request) {
@@ -32,7 +47,8 @@ function login() {
                 parent.layer.msg("登录成功");
                 parent.location.href = 'index';
             } else {
-                alert(data.msg);
+                layer.msg(data.msg);
+                $("#imgVerify").click();
                 return;
             }
 

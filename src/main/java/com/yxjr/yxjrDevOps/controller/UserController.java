@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.ApiController;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.yxjr.yxjrDevOps.common.MD5Utils;
 import com.yxjr.yxjrDevOps.entity.User;
 import com.yxjr.yxjrDevOps.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -86,6 +87,7 @@ public class UserController extends ApiController {
     @PostMapping
     @ResponseBody
     public R insert(User user) {
+        user.setPassword(MD5Utils.encrypt(user.getUserName(),user.getPassword()));
         return success(this.userService.save(user));
     }
 

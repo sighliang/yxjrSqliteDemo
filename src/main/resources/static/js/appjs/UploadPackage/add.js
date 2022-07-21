@@ -103,7 +103,17 @@ function upload() {
         layer.msg("请选择需要上传的文件");
         return;
     }
-    layer.confirm("确认要为选中的'" + rows.length + "'个设备上传更新包吗?", {
+    let layMsg="";
+    if(isAll==1){
+        layMsg="是否上传为全量更新包？此更新包将作用于全部设备！";
+    }else{
+        let devString=""
+        $.each(rows, function(i, row) {
+            devString =devString + ",["+row['devId']+"]";
+        });
+        layMsg="确定为选中的:"+devString+"设备更新指定更新包吗？此类更新包将作用单独设备！"
+    }
+    layer.confirm(layMsg, {
         btn : [ '确定', '取消' ]
         // 按钮
     }, function() {

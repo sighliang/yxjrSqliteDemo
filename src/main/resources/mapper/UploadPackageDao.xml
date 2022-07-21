@@ -30,6 +30,22 @@
         limit 1
     </select>
 
+    <select id="getLockVersion" resultMap="UploadPackageMap">
+        select
+        *
+        from upload_package
+        where dev_id=#{devId} and retain1='1'
+        limit 1
+    </select>
+
+    <update id="lock" >
+        update upload_package set  retain1 = '1' where  id=#{id}
+    </update>
+
+    <update id="unlock" >
+        update upload_package set  retain1 = '2' where  id=#{id}
+    </update>
+
     <!--    &lt;!&ndash;查询单个&ndash;&gt;-->
 <!--    <select id="queryById" resultMap="UploadPackageMap">-->
 <!--        select-->

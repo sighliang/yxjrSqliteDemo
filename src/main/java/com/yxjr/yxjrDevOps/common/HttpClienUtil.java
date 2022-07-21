@@ -41,6 +41,7 @@ public class HttpClienUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return "{\"code\":-404,\"retMsg\":\"设备访问超时，请排查需要提取日志的设备是否正常\"}";
         } finally {
             close(client);
         }

@@ -19,7 +19,7 @@ spring:
 #    content-type: text/html
   datasource:
     driver-class-name: org.sqlite.JDBC
-    url: jdbc:sqlite:D:\home\sysmon\UPDATE\yxjrApp\sql.db
+    url: jdbc:sqlite:D:/sql/gd/sql.db
 #    url: jdbc:sqlite:/home/sysmon/UPDATE/yxjrApp/sql.db
     username:
     password:
@@ -58,6 +58,6 @@ logPath:  /home/sysmon/UPDATE/yxjrApp/Logs/
 
   #数据库存放地址 linux  /home/sysmon/UPDATE/yxjrApp/sql.db windows  D:\update\sql.db
 #dbPath: E:\test\yxjrSqliteDemo\sql.db
-dbPath: D:\update\sql.db
+dbPath: D:/sql/gd/sql.db
 #dbPath: /home/sysmon/UPDATE/yxjrApp/sql.db
 

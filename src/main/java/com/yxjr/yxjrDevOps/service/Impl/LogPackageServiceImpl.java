@@ -86,6 +86,22 @@ public class LogPackageServiceImpl extends ServiceImpl<LogPackageDao, LogPackage
             return false;
         }
     }
+
+    @Override
+    public boolean deleteLogFile(String fileName,String devId) {
+        try {
+            String filePath=uploadConfig.getLogPath()+devId+"/"+fileName;
+            File ifile=new File(filePath);
+            if(ifile.exists()){
+                ifile.delete();
+            }
+            return true;
+        }catch (Exception e){
+            log.error("删除指定日志文件出现异常");
+            return false;
+        }
+    }
+
     public static long getDistDates(Date startDate,Date endDate) {
 
         long totalDate = 0;

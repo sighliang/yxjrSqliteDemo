@@ -18,5 +18,12 @@ public interface UploadPackageDao extends BaseMapper<UploadPackage> {
 
    // Boolean save(UploadPackage uploadPackage);
 
+    //根据设备编号获取设备已经锁定的版本
+    UploadPackage getLockVersion(@Param("devId")String devId);
+
+    boolean lock(int id);
+
+    boolean unlock(int id);
+
 }
 

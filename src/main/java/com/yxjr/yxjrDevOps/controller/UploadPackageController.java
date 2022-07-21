@@ -149,6 +149,29 @@ public class UploadPackageController extends ApiController {
     }
 
     /**
+     * 锁定设备版本
+     * @param id,devId
+     * @return
+     */
+    @PostMapping("/lock")
+    @ResponseBody
+    public R lock(@RequestParam("id") int id,@RequestParam("devId") String devId){
+        return uploadPackageService.lock(id,devId);
+    }
+
+    /**
+     * 解锁设备版本
+     * @param devId
+     * @return
+     */
+    @PostMapping("/unlock")
+    @ResponseBody
+    public R unlock(@RequestParam("id") int id,@RequestParam("devId")String devId){
+        return uploadPackageService.unlock(id,devId);
+    }
+
+
+    /**
      * 删除数据
      *
      * @param id 主键
@@ -157,6 +180,8 @@ public class UploadPackageController extends ApiController {
     @DeleteMapping
     @ResponseBody
     public R deleteById(int id) {
+        UploadPackage uploadPackage = this.uploadPackageService.getById(id);
+        uploadPackageService.deleteFile(uploadPackage.getPackageName());
         return success(this.uploadPackageService.removeById(id));
     }
 

@@ -141,9 +141,10 @@ public class LogPackageController extends ApiController {
     @DeleteMapping
     @ResponseBody
     public R delete(@RequestParam("id") Integer id) {
+        LogPackage logPackage=this.logPackageService.getById(id);
+        logPackageService.deleteLogFile(logPackage.getLogName(),logPackage.getDevId());
         return success(this.logPackageService.removeById(id));
     }
-
 
 
     /**
@@ -155,7 +156,7 @@ public class LogPackageController extends ApiController {
     public R getLog(@RequestParam("devId")String devId,@RequestParam("ip")String ip,@RequestParam("datetime") String dateTime){
         try {
             logger.info("用户开始提取日志");
-            String url="http://"+ip+":8900/getFiles";
+            String url="http://"+ip+":8901/zipFile";
             HttpClienUtil httpClienUtil=new HttpClienUtil();
             JSONObject json=new JSONObject();
             json.put("devId",devId);
@@ -166,18 +167,47 @@ public class LogPackageController extends ApiController {
                 return R.failed("提取文件失败");
             }
             JSONObject retJson = JSONObject.fromObject(ret);
-            if("OK".equals(retJson.get("retCode"))){
+            if(0==(int)(retJson.get("retCode"))){
                 String fileName=retJson.get("fileName").toString();
                 String download="http://"+uploadConfig.getIp()+":"+uploadConfig.getPort()+"/yxjr/common/downloadLog/"+devId+"/"+fileName;
                 return success(download);
             }
-            return R.failed("提取日志失败");
+            return R.failed("提取日志失败。"+retJson.get("retMsg"));
         }catch (Exception e){
             logger.error("转发提取设备日志出现异常"+e);
             return R.failed("转发提取设备日志出现异常"+e);
         }
     }
-
+    /**
+     * 提取设备所有日志
+     * @return 提取结果
+     */
+    @PostMapping("/getAllLog")
+    @ResponseBody
+    public R getAllLog(@RequestParam("devId")String devId,@RequestParam("ip")String ip){
+        try {
+            logger.info("用户开始提取设备所有日志");
+            String url="http://"+ip+":8901/zipAllFile";
+            HttpClienUtil httpClienUtil=new HttpClienUtil();
+            JSONObject json=new JSONObject();
+            json.put("devId",devId);
+            String ret= httpClienUtil.httpPostWithJSON(url,json);
+            if("".equals(ret) || ret==null){
+                logger.info("日志提取失败，访问机器失败");
+                return R.failed("提取文件失败");
+            }
+            JSONObject retJson = JSONObject.fromObject(ret);
+            if(0 == (int) retJson.get("retCode")){
+                String fileName=retJson.get("fileName").toString();
+                String download="http://"+uploadConfig.getIp()+":"+uploadConfig.getPort()+"/yxjr/common/downloadLog/"+devId+"/"+fileName;
+                return success(download);
+            }
+            return R.failed("提取日志失败。"+retJson.get("retMsg"));
+        }catch (Exception e){
+            logger.error("转发提取设备日志出现异常"+e);
+            return R.failed("转发提取设备日志出现异常"+e);
+        }
+    }
     /**
      * 删除服务器上一个月之前的日志文件
      */
